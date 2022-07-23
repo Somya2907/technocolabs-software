@@ -1,0 +1,78 @@
+* {
+    margin: 0px;
+  }
+  #todo {
+    font-size: 24px;
+    margin-bottom: 0;
+    margin-right: 20px;
+    white-space: nowrap;
+  }
+  li {
+    list-style: none;
+  }
+.nav-item {
+    padding: 0 .75rem;
+    min-width: 2rem;
+    transition: .3s red;
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+  }
+  .nav-item:hover {
+    shadow-color: #000;
+    shadow-offset: 4px;
+    shadow-opacity: 1.5;
+    shadow-radius: 10px;
+    elevation: 5;
+    background-color: #f5f5f5;
+    color: #000;
+  }
+  .nav-link:hover {
+    color: red;
+  }
+  .nav-link .active {
+    border-top: 3px solid red;
+    color: red;
+  }
+  .nav-item .active {
+    border-top: 3px solid red;
+    color: red;
+  }
+  li {
+    list-style: none;
+  }
+  .nav-item {
+    padding: 0 .75rem;
+    min-width: 2rem;
+    transition: .3s red;
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  
+    font-size: 20px;
+  }
+  
+  .nav-item .active {
+    border-top: 3px solid red;
+    color: red;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="date-"] {
+      width: 100%;
+    }
+  }
+  

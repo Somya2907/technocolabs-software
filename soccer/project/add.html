@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <title>Project TaskBoard</title>
+    <link
+      rel="stylesheet"
+      href="../assets/plugins/bootstrap/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../assets/plugins/nestable/jquery-nestable.css"
+    />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+      integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+      integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      //Start date and end date
+      var start = new Date();
+      // set end date to max ten year period:
+      var end = new Date(new Date().setYear(start.getFullYear() + 10));
+
+      $("#startDate, #endDate").datepicker("setDate", start);
+      $("#startDate")
+        .datepicker({
+          startDate: start,
+          format: "dd-mm-yyyy",
+          todayHighlight: true,
+          autoclose: true,
+          endDate: end,
+          // update "toDate" defaults whenever "fromDate" changes
+        })
+        .on("changeDate", function () {
+          // set the "toDate" start to not be later than "fromDate" ends:
+          $("#endDate").val("").datepicker("update");
+          $("#endDate").datepicker("setStartDate", new Date($(this).val()));
+        });
+
+      $("#endDate").datepicker({
+        startDate: start,
+        format: "dd-mm-yyyy",
+        todayHighlight: true,
+        endDate: end,
+      });
+    </script>
+  </head>
+  <body class="font-montserrat">
+    <div id="main_content">
+      <div class="page">
+        <div class="section-body">
+          <div class="container-fluid">
+            <div class="tab-content taskboard">
+              <form class="text-wrap">
+                <h3 class="form-title mt-3 text-center">Add Task</h3>
+                <div class="form-group">
+                  <label for="Task">Task*</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Task"
+                    placeholder="Enter Task Name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="Task Description">Task Description*</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Task Description"
+                    placeholder="Enter Task Description"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="No. of team members">No. of team members*</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="No. of team members"
+                    placeholder="No. of team members"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="Duration">Duration*</label>
+
+                  <div class="start_date">
+                    <input
+                      type="text"
+                      class="form-control mb-2"
+                      name="start_date"
+                      id="startDate"
+                      value=""
+                      placeholder="Start Date (dd-mm-yyyy)*"
+                    />
+                  </div>
+
+                  <div class="end_date">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="end_date"
+                      id="endDate"
+                      value=""
+                      placeholder="End Date (dd-mm-yyyy)*"
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="Action">Action*</label>
+                  <select class="form-control" id="Action">
+                    <option>Planned</option>
+                    <option>In Planned</option>
+                    <option>Completed</option>
+                    <option>In-Completed</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="Progress">Progress</label>
+                  <input
+                    progress
+                    max="100"
+                    min="0"
+                    type="number"
+                    class="form-control"
+                    id="Progress"
+                    placeholder="Progress Percent"
+                  />
+                </div>
+                <div class="form-group">
+                  <button type="button" class="btn btn-success">Add</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
