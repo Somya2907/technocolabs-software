@@ -8,9 +8,7 @@
 html{
   scroll-behavior: smooth;
 }
-body{
-  background: #ff7979;
-}
+
 ::selection{
   color: #fff;
   background: #ff7979;
